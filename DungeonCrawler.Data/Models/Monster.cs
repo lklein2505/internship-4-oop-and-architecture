@@ -1,0 +1,43 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace DungeonCrawler.Data.Models
+{
+    public class Monster
+    {
+        public Monster()
+        {
+            MonsterSpawnStore.SpawnMonsters.Add(this);
+        }
+        public string Name { get; set; }
+        public int MaxHealth { get; set; }
+        public int Health { get; set; }
+        public int Damage { get; set; }
+        public int Expirience { get; set; }
+
+        public override string ToString()
+        {
+            return $"{Name}\nXP worth: {Expirience}\nHP: {Health}/{MaxHealth}\n";
+        }
+
+        public static void RandomMonsterSpawn()
+        {           
+            for (var i = 0; i < 10; i++)
+            {
+                Random random = new Random();
+                var generatedNumber = random.Next(1, 101);
+                if (generatedNumber < 60)
+                    new Goblin();
+                if (generatedNumber > 60 && generatedNumber < 90)
+                    new Brute();
+                if (generatedNumber > 90)
+                    new Witch();
+            }
+            foreach (var monster in MonsterSpawnStore.SpawnMonsters)
+            {
+                Console.WriteLine(monster);
+            }
+        }
+    }
+}
