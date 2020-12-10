@@ -6,8 +6,8 @@ namespace DungeonCrawler.Data.Enums
 {
     public enum AttackType
     {
-        DirectAttack,
-        SideAttack,
-        CounterAttack
+        DirectAttack = 1,
+        SideAttack = 2,
+        CounterAttack = 3
     }
 }

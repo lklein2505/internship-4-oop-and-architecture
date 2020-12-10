@@ -1,6 +1,8 @@
 ﻿using DungeonCrawler.Data;
 using DungeonCrawler.Data.Models;
+using DungeonCrawler.Data.Services;
 using DungeonCrawler.Domain.Helpers;
+using DungeonCrawler.Domain.Services;
 using System;
 
 namespace DungeonCrawler.Presentation
@@ -34,11 +36,8 @@ namespace DungeonCrawler.Presentation
                             isChoosen = true; 
                         else
                             Console.WriteLine("You have to choose between numbers '1', '2' and '3'! Try again!\n");    
-                    }                        
-                    Monster.RandomMonsterSpawn();
-                    PrintStats.PrintLiveStats(choosenHero, MonsterSpawnStore.SpawnMonsters[0]);
-                    Fight.PlayerAttack();                    
-                    break;
+                    }
+                    GameFlow.GameStart(choosenHero);
                 }
                 else if (startChoice == 2)
                     quitTheGame = true;
@@ -48,12 +47,12 @@ namespace DungeonCrawler.Presentation
         }
 
         static Hero ChampionSelect()
-        {
+        {            
             Console.WriteLine("\n" +
                 "1 - Warrior (Deals less damage but has more HP)\n" +
                 "2 - Mage (Deals more damage but has less HP)\n" +
                 "3 - Ranger (Deals medium damage and has medium HP)\n" +
-                "Pick a type of your champion:");
+                "Pick a type of your champion:");            
             var championPick = int.Parse(Console.ReadLine());
 
             switch (championPick)

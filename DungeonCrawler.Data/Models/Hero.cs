@@ -1,14 +1,15 @@
-﻿using System;
+﻿using DungeonCrawler.Data.Abstractions;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace DungeonCrawler.Data.Models
 {
-    public class Hero
+    public class Hero : IFightConsequences
     {
         public Hero()
         {
-            Console.WriteLine("Enter you character's name:");
+            Console.WriteLine("\nEnter you character's name:");
             Name = Console.ReadLine();
         }
 
@@ -21,7 +22,7 @@ namespace DungeonCrawler.Data.Models
 
         public override string ToString()
         {
-            return $"{Name}\nXP: {Expirience}\nLevel: {Level}\nHP: {Health}/{MaxHealth}";
+            return $"\t{Name}\n\tXP: {Expirience}\n\tLevel: {Level}\n\tHP: {Health}/{MaxHealth}";
         }
     }
 

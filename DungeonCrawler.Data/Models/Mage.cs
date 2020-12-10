@@ -11,7 +11,7 @@ namespace DungeonCrawler.Data.Models
 
         public Mage()
         {            
-            MaxHealth = 100;
+            MaxHealth = 80;
             Health = MaxHealth;
             Damage = 25;
             MaxMana = 100;
@@ -20,7 +20,7 @@ namespace DungeonCrawler.Data.Models
 
         public override string ToString()
         {
-            return $"{base.ToString()}\nMana: {Mana}/{MaxMana}";
+            return $"{base.ToString()}\n\tMana: {Mana}/{MaxMana}";
         }
 
         public void Respawn()

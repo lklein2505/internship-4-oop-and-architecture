@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DungeonCrawler.Data.Models;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -8,7 +9,6 @@ namespace DungeonCrawler.Data.Abstractions
     {
         int Damage { get; set; }
         int Health { get; set; }
-
-        int Expirience { get; set; }
+        int Expirience { get; set; }         
     }
 }

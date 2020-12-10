@@ -18,8 +18,11 @@ namespace DungeonCrawler.Domain.Helpers
 
             if (player is Ranger)
                 Console.ForegroundColor = ConsoleColor.Yellow;
-
-            Console.WriteLine(player + "\n");
+            
+            if (player.Health > 0)
+                Console.WriteLine(player + "\n");
+            else
+                Console.WriteLine($"{player.Name} is DEAD!");
 
             if (monster is Goblin)
                 Console.ForegroundColor = ConsoleColor.DarkRed;
@@ -30,8 +33,11 @@ namespace DungeonCrawler.Domain.Helpers
             if (monster is Witch)
                 Console.ForegroundColor = ConsoleColor.DarkMagenta;
 
+            if (monster.Health <= 0)
+                Console.WriteLine($"{monster.Name} is DEAD! Good job!");
+            else    
+                Console.WriteLine(monster);
             
-            Console.WriteLine(monster);
             Console.ResetColor();
 
         }        

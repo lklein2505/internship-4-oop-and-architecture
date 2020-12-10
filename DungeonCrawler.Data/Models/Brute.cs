@@ -13,7 +13,8 @@ namespace DungeonCrawler.Data.Models
             MaxHealth = 120;
             Health = MaxHealth;
             Damage = 15;
-            Expirience = 40;            
+            Expirience = 40;
+            MaxHealthAttack = 25;
         }
     }
 }

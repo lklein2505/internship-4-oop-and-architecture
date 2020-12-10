@@ -1,10 +1,11 @@
-﻿using System;
+﻿using DungeonCrawler.Data.Abstractions;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace DungeonCrawler.Data.Models
 {
-    public class Monster
+    public class Monster : IFightConsequences
     {
         public Monster()
         {
@@ -18,7 +19,7 @@ namespace DungeonCrawler.Data.Models
 
         public override string ToString()
         {
-            return $"{Name}\nXP worth: {Expirience}\nHP: {Health}/{MaxHealth}\n";
+            return $"\t{Name}\n\tXP worth: {Expirience}\n\tHP: {Health}/{MaxHealth}\n";
         }
 
         public static void RandomMonsterSpawn()
@@ -33,11 +34,7 @@ namespace DungeonCrawler.Data.Models
                     new Brute();
                 if (generatedNumber > 90)
                     new Witch();
-            }
-            foreach (var monster in MonsterSpawnStore.SpawnMonsters)
-            {
-                Console.WriteLine(monster);
-            }
+            }            
         }
     }
 }
