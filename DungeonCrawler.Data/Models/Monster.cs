@@ -1,11 +1,8 @@
-﻿using DungeonCrawler.Data.Abstractions;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System;
 
 namespace DungeonCrawler.Data.Models
 {
-    public class Monster : IFightConsequences
+    public class Monster
     {
         public Monster()
         {
@@ -19,7 +16,7 @@ namespace DungeonCrawler.Data.Models
 
         public override string ToString()
         {
-            return $"\t{Name}\n\tXP worth: {Expirience}\n\tHP: {Health}/{MaxHealth}\n";
+            return $"\t{Name}\n\tXP worth: {Expirience}\n\tHP: {Health}/{MaxHealth}\n\tDamage: {Damage}\n";
         }
 
         public static void RandomMonsterSpawn()

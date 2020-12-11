@@ -1,7 +1,4 @@
 ﻿using System;
-using DungeonCrawler.Data;
-using System.Collections.Generic;
-using System.Text;
 
 namespace DungeonCrawler.Data.Models
 {

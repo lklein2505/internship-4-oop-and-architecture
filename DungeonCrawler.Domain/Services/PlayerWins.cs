@@ -1,8 +1,6 @@
 ﻿using DungeonCrawler.Data.Models;
 using DungeonCrawler.Domain.Helpers;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace DungeonCrawler.Domain.Services
 {
@@ -29,7 +27,7 @@ namespace DungeonCrawler.Domain.Services
                     else if (attackChoice == 2)
                     {
                         monster.Health -= warrior.RageAttack;
-                        warrior.Health -= (int)(0.15 * warrior.Health);
+                        warrior.Health -= (int)(0.15m * warrior.Health);
                         isChoosen = true;
                     }
                     else
@@ -44,15 +42,15 @@ namespace DungeonCrawler.Domain.Services
                 if (mage.Mana < 30)
                 {
                     mage.Mana = mage.MaxMana;
-                    Console.WriteLine("\n\tYOU WON\n" +
-                        "Your mana has been restored!");
+                    Console.WriteLine("\n\tYOU WON THE ROUND\n" +
+                        "\tYour mana has been restored!");
                 }
                 else
                 {
                     var isChoosen = false;
                     while (!isChoosen)
                     {
-                        Console.WriteLine("\n\tYOU WON\n" +
+                        Console.WriteLine("\n\tYOU WON THE ROUND\n" +
                         "1 - Regular attack\n" +
                         "2 - Restore HP (Lose 40% of your mana)\n" +
                         "Choose an action: ");
@@ -67,7 +65,7 @@ namespace DungeonCrawler.Domain.Services
                         else if (attackChoice == 2)
                         {
                             mage.Health = mage.MaxHealth;
-                            mage.Mana -= (int)(0.4 * mage.Mana);
+                            mage.Mana -= (int)(0.4m * mage.Mana);
                             isChoosen = true;
                         }
                         else
@@ -80,7 +78,7 @@ namespace DungeonCrawler.Domain.Services
 
             if (choosenHero is Ranger ranger)
             {
-                Console.WriteLine("\n\tYOU WON\n");
+                Console.WriteLine("\n\tYOU WON THE ROUND\n");
                 var isStuned = true;
                 while (isStuned && monster.Health > 0)
                 {

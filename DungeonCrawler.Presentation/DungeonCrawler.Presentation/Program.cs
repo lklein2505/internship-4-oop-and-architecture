@@ -16,7 +16,7 @@ namespace DungeonCrawler.Presentation
 
         static void StartMenu()
         {
-            Console.WriteLine("\t\n WELCOME TO A DUNGEON-CRAWLER GAME\n\n"); 
+            Console.WriteLine("\n\t WELCOME TO A DUNGEON-CRAWLER GAME\n\n"); 
             var quitTheGame = false;
             while (!quitTheGame)
             {                
@@ -42,7 +42,10 @@ namespace DungeonCrawler.Presentation
                 else if (startChoice == 2)
                     quitTheGame = true;
                 else                
-                    Console.WriteLine("You have to choose between numbers '1' and '2'! Try again!\n");                                                 
+                    Console.WriteLine("You have to choose between numbers '1' and '2'! Try again!\n");
+
+                Console.WriteLine("\nYou played well! Would you like to play one more time?\n" +
+                    "Enter '1' again if you do! Let's have a great time!");
             }
         }
 

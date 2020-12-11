@@ -1,11 +1,8 @@
-﻿using DungeonCrawler.Data.Abstractions;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System;
 
 namespace DungeonCrawler.Data.Models
 {
-    public class Hero : IFightConsequences
+    public class Hero
     {
         public Hero()
         {
@@ -17,12 +14,14 @@ namespace DungeonCrawler.Data.Models
         public int MaxHealth { get; set; }
         public int Health { get; set; }
         public int Damage { get; set; }
-        public int Expirience { get; set; } = 0;        
+        public int Expirience { get; set; } = 0;
+        public int MaxExpirience { get; set; } = 100;
         public int Level { get; set; } = 1;
 
         public override string ToString()
         {
-            return $"\t{Name}\n\tXP: {Expirience}\n\tLevel: {Level}\n\tHP: {Health}/{MaxHealth}";
+            return $"\t{Name}\n\tXP: {Expirience}/{MaxExpirience}\n\t" +
+                $"Level: {Level}\n\tHP: {Health}/{MaxHealth}\n\tDamage: {Damage}";
         }
     }
 

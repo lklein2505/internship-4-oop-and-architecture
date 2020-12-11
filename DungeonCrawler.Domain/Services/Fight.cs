@@ -1,10 +1,6 @@
 ﻿using DungeonCrawler.Data.Enums;
 using System;
-using DungeonCrawler.Data;
-using System.Collections.Generic;
-using System.Text;
 using DungeonCrawler.Data.Models;
-using DungeonCrawler.Domain.Helpers;
 using DungeonCrawler.Domain.Services;
 
 namespace DungeonCrawler.Data.Services
@@ -13,8 +9,8 @@ namespace DungeonCrawler.Data.Services
     {
         public static void PlayerAttack(Hero choosenHero, Monster monster)
         {
-            Console.WriteLine("\nYou can choose between 3 different types of attacking the enemy.\n" +
-                "Your enemy also chooses one.\n" +
+            Console.WriteLine("\nYou can choose between 3 different types of attack on enemy.\n" +
+                "Your enemy also chooses one.\n\n" +
                 "\tThe rule is:\n" +
                 "\tDirect attack wins against side attack\n" +
                 "\tSide attack wins against counter attack\n" +
@@ -24,7 +20,7 @@ namespace DungeonCrawler.Data.Services
             while (!isAttackChoosen)
             {                
                 Console.WriteLine(
-                "CHOOSE THE NUMBER OF YOUR ATTACK:\n" +
+                "CHOOSE THE TYPE OF YOUR ATTACK (1, 2 or 3):\n" +
                 "1 - Direct attack\n" +
                 "2 - Side attack\n" +
                 "3 - Counter attack");
@@ -52,7 +48,7 @@ namespace DungeonCrawler.Data.Services
                 playerAttack == (int)AttackType.CounterAttack && enemyAttack == (int)AttackType.SideAttack)
                 MonsterWins.CalculateCosts(choosenHero, monster);
             else
-                Console.WriteLine("\nIt's a tie!");
+                Console.WriteLine("\n\tIt's a tie!\n");
         }
                
     }

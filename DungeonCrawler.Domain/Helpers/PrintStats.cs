@@ -1,8 +1,5 @@
 ﻿using DungeonCrawler.Data.Models;
 using System;
-using System.Collections.Generic;
-using System.Runtime.InteropServices;
-using System.Text;
 
 namespace DungeonCrawler.Domain.Helpers
 {
@@ -22,7 +19,7 @@ namespace DungeonCrawler.Domain.Helpers
             if (player.Health > 0)
                 Console.WriteLine(player + "\n");
             else
-                Console.WriteLine($"{player.Name} is DEAD!");
+                Console.WriteLine($"\t{player.Name.ToUpper()} is DEAD!");
 
             if (monster is Goblin)
                 Console.ForegroundColor = ConsoleColor.DarkRed;
@@ -34,7 +31,7 @@ namespace DungeonCrawler.Domain.Helpers
                 Console.ForegroundColor = ConsoleColor.DarkMagenta;
 
             if (monster.Health <= 0)
-                Console.WriteLine($"{monster.Name} is DEAD! Good job!");
+                Console.WriteLine($"\t{monster.Name.ToUpper()} is DEAD! Good job!");
             else    
                 Console.WriteLine(monster);
             
