@@ -21,23 +21,23 @@ namespace DungeonCrawler.Data.Models
             for (var i = 0; i < 2; i++)
             {
                 Random random = new Random();
-                var generatedNumber = random.Next(1, 91);
+                var generatedNumber = random.Next(1, 101);
                 if (generatedNumber < 60)
                 {
                     MonsterSpawnStore.SpawnMonsters.Insert(MonsterSpawnStore.SpawnMonsters.IndexOf(monster) + 1, new Goblin());
-                    Console.WriteLine("Goblin\n");
+                    Console.WriteLine("Goblin");
                 }   
                 
                 if (generatedNumber > 60 && generatedNumber < 90)
                 {
                     MonsterSpawnStore.SpawnMonsters.Insert(MonsterSpawnStore.SpawnMonsters.IndexOf(monster) + 1, new Brute());                    
-                    Console.WriteLine("Brute\n");
+                    Console.WriteLine("Brute");
                 }              
 
                 if (generatedNumber > 90)
                 {
                     MonsterSpawnStore.SpawnMonsters.Insert(MonsterSpawnStore.SpawnMonsters.IndexOf(monster) + 1, new Witch());                    
-                    Console.WriteLine("Another witch!\n");
+                    Console.WriteLine("Another witch!");
                 }
             }            
         }

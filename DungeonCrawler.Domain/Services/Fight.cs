@@ -8,14 +8,7 @@ namespace DungeonCrawler.Data.Services
     public class Fight
     {
         public static void PlayerAttack(Hero choosenHero, Monster monster)
-        {
-            Console.WriteLine("\nYou can choose between 3 different types of attack on enemy.\n" +
-                "Your enemy also chooses one.\n\n" +
-                "\tThe rule is:\n" +
-                "\tDirect attack wins against side attack\n" +
-                "\tSide attack wins against counter attack\n" +
-                "\tCounter attack wins against direct attack\n\n");
-
+        {           
             var isAttackChoosen = false;
             while (!isAttackChoosen)
             {                

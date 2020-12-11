@@ -16,11 +16,18 @@ namespace DungeonCrawler.Presentation
 
         static void StartMenu()
         {
-            Console.WriteLine("\n\t WELCOME TO A DUNGEON-CRAWLER GAME\n\n"); 
+            Console.WriteLine("\n\tDUNGEON-CRAWLER GAME\n\n");
+
+            Console.WriteLine("\tWELCOME hero! \n\n - You were sent on a special mission: " +
+                "to find a treasure hidden in depths of this long and stinky dungeons full of creepy monsters!\n" +
+                "- You will have to fight against (at least) 10 monsters hungry for your blood! " +
+                "GOBLINS, BRUTES AND WITCHES are waiting for you just around the corner!\n" +
+                "- You can choose one type of hero...WARRIOR, MAGE OR RANGER!\n");
+
             var quitTheGame = false;
             while (!quitTheGame)
             {                
-                Console.WriteLine("\n" +                    
+                Console.WriteLine("\n\n" +                    
                     "1 - Start the game\n" +
                     "2 - Quit the game\n" +
                     "Pick an option my friend:");
@@ -38,14 +45,14 @@ namespace DungeonCrawler.Presentation
                             Console.WriteLine("You have to choose between numbers '1', '2' and '3'! Try again!\n");    
                     }
                     GameFlow.GameStart(choosenHero);
+                    
+                    Console.WriteLine("\nYou played well! Would you like to play one more time?\n" +
+                    "Enter '1' again if you do! Let's have a great time!");
                 }
                 else if (startChoice == 2)
                     quitTheGame = true;
                 else                
-                    Console.WriteLine("You have to choose between numbers '1' and '2'! Try again!\n");
-
-                Console.WriteLine("\nYou played well! Would you like to play one more time?\n" +
-                    "Enter '1' again if you do! Let's have a great time!");
+                    Console.WriteLine("You have to choose between numbers '1' and '2'! Try again!\n");                              
             }
         }
 

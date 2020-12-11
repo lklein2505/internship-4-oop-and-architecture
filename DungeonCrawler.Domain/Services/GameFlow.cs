@@ -15,10 +15,17 @@ namespace DungeonCrawler.Domain.Services
             var skipQuestion = true;
             var isChoosen = false;
 
-            foreach (var monster in MonsterSpawnStore.SpawnMonsters)
+            Console.WriteLine("\nYou can choose between 3 different types of attack on enemy.\n" +
+                "Your enemy also chooses one.\n\n" +
+                "\tThe rule is:\n" +
+                "\tDirect attack wins against side attack\n" +
+                "\tSide attack wins against counter attack\n" +
+                "\tCounter attack wins against direct attack\n\n");
+
+            for (var i = 0; i < MonsterSpawnStore.SpawnMonsters.Count; i++)
             {
                 Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine($"\n\tYour next opponent is {monster.Name.ToUpper()}\n");
+                Console.WriteLine($"\n\tYour next opponent is {MonsterSpawnStore.SpawnMonsters[i].Name.ToUpper()}\n");
                 Console.ResetColor();
 
                 if (!skipQuestion)
@@ -43,24 +50,26 @@ namespace DungeonCrawler.Domain.Services
                 }                                      
                 skipQuestion = false;                             
 
-                while (monster.Health > 0 && choosenHero.Health > 0)
+                while (MonsterSpawnStore.SpawnMonsters[i].Health > 0 && choosenHero.Health > 0)
                 {
-                    Fight.PlayerAttack(choosenHero, monster);
-                    PrintStats.PrintLiveStats(choosenHero, monster);
+                    Fight.PlayerAttack(choosenHero, MonsterSpawnStore.SpawnMonsters[i]);
+                    PrintStats.PrintLiveStats(choosenHero, MonsterSpawnStore.SpawnMonsters[i]);
                     
-                    while (choosenHero is Mage mage && canRespawn)
+                    if (choosenHero is Mage mage && canRespawn && choosenHero.Health <= 0)
                     {
                         mage.Respawn();
+                        Console.ForegroundColor = ConsoleColor.Blue;
                         Console.WriteLine("\n\tYOU RESPAWNED!\n");
+                        Console.ResetColor();
                         canRespawn = false;
                     }               
                     
-                    if (monster is Witch && monster.Health < 0)                    
-                        Witch.WitchMonsterSpawn(monster);     
+                    if (MonsterSpawnStore.SpawnMonsters[i] is Witch && MonsterSpawnStore.SpawnMonsters[i].Health < 0)                    
+                        Witch.WitchMonsterSpawn(MonsterSpawnStore.SpawnMonsters[i]);     
                     
-                    if (monster.Health <= 0)
+                    if (MonsterSpawnStore.SpawnMonsters[i].Health <= 0)
                     {
-                        LevelAndExpirience.XpCalculator(monster, choosenHero);
+                        LevelAndExpirience.XpCalculator(MonsterSpawnStore.SpawnMonsters[i], choosenHero);
                         choosenHero.Health += (int)(0.25m * choosenHero.MaxHealth);
                         if (choosenHero.Health > choosenHero.MaxHealth)
                             choosenHero.Health = choosenHero.MaxHealth;
@@ -70,11 +79,13 @@ namespace DungeonCrawler.Domain.Services
                 if (choosenHero.Health <= 0)
                 {
                     EndPrint.PlayerLostPrint();
+                    MonsterSpawnStore.SpawnMonsters.Clear();
                     break;
                 }                               
             }
             if (choosenHero.Health > 0)
                 EndPrint.PlayerWonPrint();
+            MonsterSpawnStore.SpawnMonsters.Clear();
         }        
 
         public static void HealthRegenerationChoice(int regenerateHealthChoice, Hero choosenHero)

@@ -31,7 +31,8 @@ namespace DungeonCrawler.Domain.Helpers
                 Console.ForegroundColor = ConsoleColor.DarkMagenta;
 
             if (monster.Health <= 0)
-                Console.WriteLine($"\t{monster.Name.ToUpper()} is DEAD! Good job!");
+                Console.WriteLine($"\t{monster.Name.ToUpper()} is DEAD! " +
+                    $"Good job, you got {monster.Expirience} XP!");
             else    
                 Console.WriteLine(monster);
             
