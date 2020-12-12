@@ -12,12 +12,18 @@ namespace DungeonCrawler.Data.Services
             var isAttackChoosen = false;
             while (!isAttackChoosen)
             {                
-                Console.WriteLine(
-                "CHOOSE THE TYPE OF YOUR ATTACK (1, 2 or 3):\n" +
-                "1 - Direct attack\n" +
+                Console.WriteLine(                 
+                "\n1 - Direct attack\n" +
                 "2 - Side attack\n" +
-                "3 - Counter attack");
-                var playerAttack = int.Parse(Console.ReadLine());
+                "3 - Counter attack\n" +
+                "CHOOSE THE TYPE OF YOUR ATTACK(1, 2 or 3):");
+                var playerAttackString = Console.ReadLine();
+                int playerAttack;
+                while(!int.TryParse(playerAttackString, out playerAttack))
+                {
+                    Console.WriteLine("\nYou have to choose between numbers '1', '2' and '3'! Try again:");
+                    playerAttackString = Console.ReadLine();
+                }
                 if (playerAttack > 0 && playerAttack < 4)
                 {
                     isAttackChoosen = true;
@@ -26,7 +32,7 @@ namespace DungeonCrawler.Data.Services
                     Duel(playerAttack, enemyAttack, choosenHero, monster);
                 }                    
                 else
-                    Console.WriteLine("You have to choose between numbers '1', '2' and '3'! Try again!\n");
+                    Console.WriteLine("\nYou have to choose between numbers '1', '2' and '3'! Try again!:");
             }                       
         }
 

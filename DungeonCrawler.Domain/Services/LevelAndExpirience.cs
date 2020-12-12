@@ -14,11 +14,14 @@ namespace DungeonCrawler.Domain.Services
                 choosenHero.Level += 1;
                 choosenHero.MaxHealth += 15;
                 choosenHero.Damage += 5;
+                choosenHero.MaxExpirience += 25;
 
                 if (choosenHero is Mage mage)
                     mage.MaxMana += 15;
 
+                Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("\n\tYOU LEVELED UP!\n");
+                Console.ResetColor();
             }
         }
     }

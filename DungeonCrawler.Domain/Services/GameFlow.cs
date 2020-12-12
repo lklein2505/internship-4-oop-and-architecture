@@ -15,12 +15,14 @@ namespace DungeonCrawler.Domain.Services
             var skipQuestion = true;
             var isChoosen = false;
 
+            Console.BackgroundColor = ConsoleColor.DarkRed;
             Console.WriteLine("\nYou can choose between 3 different types of attack on enemy.\n" +
                 "Your enemy also chooses one.\n\n" +
-                "\tThe rule is:\n" +
-                "\tDirect attack wins against side attack\n" +
-                "\tSide attack wins against counter attack\n" +
-                "\tCounter attack wins against direct attack\n\n");
+                "The rule is:\n" +
+                "Direct attack wins against side attack\n" +
+                "Side attack wins against counter attack\n" +
+                "Counter attack wins against direct attack\n\n");
+            Console.ResetColor();
 
             for (var i = 0; i < MonsterSpawnStore.SpawnMonsters.Count; i++)
             {
@@ -36,15 +38,23 @@ namespace DungeonCrawler.Domain.Services
 
                     while (!isChoosen)
                     {
-                        var regenerateHealthChoice = int.Parse(Console.ReadLine());
+                        var regenerateHealthChoiceString = Console.ReadLine();
+                        int regenerateHealthChoice;
+                        while (!int.TryParse(regenerateHealthChoiceString, out regenerateHealthChoice))
+                        {
+                            Console.WriteLine("\nYou have to choose between numbers '1' and '2'! Try again!" +
+                                "\nEnter a number (1 or 2): ");
+                            regenerateHealthChoiceString = Console.ReadLine();
+                        }
+                        
                         if (regenerateHealthChoice == 1 || regenerateHealthChoice == 2)
                         {
                             HealthRegenerationChoice(regenerateHealthChoice, choosenHero);
                             isChoosen = true;
-                        }                           
-                        else                        
+                        }
+                        else
                             Console.WriteLine("\nYou have to choose between numbers '1' and '2'! Try again!" +
-                                "\nEnter a number (1 or 2): ");                        
+                                "\nEnter a number (1 or 2): ");
                     }
                     isChoosen = false;
                 }                                      
@@ -58,7 +68,7 @@ namespace DungeonCrawler.Domain.Services
                     if (choosenHero is Mage mage && canRespawn && choosenHero.Health <= 0)
                     {
                         mage.Respawn();
-                        Console.ForegroundColor = ConsoleColor.Blue;
+                        Console.ForegroundColor = ConsoleColor.Cyan;
                         Console.WriteLine("\n\tYOU RESPAWNED!\n");
                         Console.ResetColor();
                         canRespawn = false;

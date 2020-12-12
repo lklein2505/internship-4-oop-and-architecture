@@ -17,7 +17,15 @@ namespace DungeonCrawler.Domain.Services
                     "1 - Regular attack\n" +
                     "2 - Rage attack (Deal double damage but lose 15% of your health)\n" +
                     "Choose the type of the attack:");
-                    var attackChoice = int.Parse(Console.ReadLine());
+
+                    var attackChoiceString = Console.ReadLine();
+                    int attackChoice;
+
+                    while (!int.TryParse(attackChoiceString, out attackChoice))
+                    {
+                        Console.WriteLine("\nYou have to choose between numbers '1' and '2'! Try again:");
+                        attackChoiceString = Console.ReadLine();
+                    }
 
                     if (attackChoice == 1)
                     {
@@ -32,7 +40,7 @@ namespace DungeonCrawler.Domain.Services
                     }
                     else
                     {
-                        Console.WriteLine("You have to choose between numbers '1' and '2'! Try again!\n");
+                        Console.WriteLine("\nYou have to choose between numbers '1' and '2'! Try again: ");
                     }
                 }
             }
@@ -54,7 +62,15 @@ namespace DungeonCrawler.Domain.Services
                         "1 - Regular attack\n" +
                         "2 - Restore HP (Lose 40% of your mana)\n" +
                         "Choose an action: ");
-                        var attackChoice = int.Parse(Console.ReadLine());
+                        
+                        var attackChoiceString = Console.ReadLine();
+                        int attackChoice;
+                        
+                        while(!int.TryParse(attackChoiceString, out attackChoice))
+                        {
+                            Console.WriteLine("\nYou have to choose between numbers '1' and '2'! Try again:");
+                            attackChoiceString = Console.ReadLine();
+                        }
 
                         if (attackChoice == 1)
                         {
@@ -70,7 +86,7 @@ namespace DungeonCrawler.Domain.Services
                         }
                         else
                         {
-                            Console.WriteLine("You have to choose between numbers '1' and '2'! Try again!\n");
+                            Console.WriteLine("\nYou have to choose between numbers '1' and '2'! Try again:");
                         }
                     }                
                 }

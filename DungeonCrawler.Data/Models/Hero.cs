@@ -15,7 +15,7 @@ namespace DungeonCrawler.Data.Models
         public int Health { get; set; }
         public int Damage { get; set; }
         public int Expirience { get; set; } = 0;
-        public int MaxExpirience { get; set; } = 100;
+        public int MaxExpirience { get; set; } = 50;
         public int Level { get; set; } = 1;
 
         public override string ToString()

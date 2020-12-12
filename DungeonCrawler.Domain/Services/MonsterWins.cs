@@ -21,7 +21,7 @@ namespace DungeonCrawler.Domain.Services
                 if (generatedNumber <= brute.MaxHealthAttack)
                 {
                     choosenHero.Health -= (int)(0.15 * choosenHero.MaxHealth);
-                    Console.WriteLine("\nOh no, he used his special ability!");
+                    Console.WriteLine("\n\tOh no, he used his special ability! He attacked your maximum health!\n");
                 }
                 else
                     choosenHero.Health -= brute.Damage;
@@ -34,7 +34,7 @@ namespace DungeonCrawler.Domain.Services
 
                 if (generatedNumber <= witch.ConfusionAttack)
                 {
-                    Console.WriteLine("\nOh no, the witch used her special ability - CONFUSION attack!" +
+                    Console.WriteLine("\n\tOh no, the witch used her special ability - CONFUSION attack!" +
                         " Your health and health of monsters to come has been changed!\n");
 
                     foreach (var monsterToCome in MonsterSpawnStore.SpawnMonsters)
